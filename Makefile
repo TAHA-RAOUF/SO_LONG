@@ -3,7 +3,7 @@ CC = gcc
 CFLAGS = -g -Wall -Wextra -Werror
 
 
-SRCS = get_next_line.c get_next_line_utils.c main.c utils.c utils_2.c
+SRCS = get_next_line.c get_next_line_utils.c main.c utils.c utils_2.c check_error.c
 OBJECTS = $(SRCS:.c=.o)
 
 

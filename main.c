@@ -6,7 +6,7 @@
 /*   By: moraouf <moraouf@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/23 15:54:50 by moraouf           #+#    #+#             */
-/*   Updated: 2025/03/25 03:24:44 by moraouf          ###   ########.fr       */
+/*   Updated: 2025/03/25 18:21:04 by moraouf          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,35 +16,7 @@
 #include "so_long.h"
 
 
-int     count_line(int fd)
-{
-    int len;
-    char *line;
 
-    len = 0;
-    lseek(fd,0,SEEK_SET);
-    while((line = get_next_line(fd))!= NULL)
-    {
-        len++;
-    }
-    return(len);
-}
-void fun_error()
-{
-    write(2,"Error\n",6);
-    write(2,"Invalid Map",12);
-    exit(1);
-}
-void fun_free(char *str,char **double_array,t_list *list)
-{
-    if(str)
-        free(str);
-    if(double_array)
-        free_mem(double_array);
-    if(list)
-        free (list);
-    fun_error();
-}
 char  *read_data(int fd)
 {
     char    *line;
@@ -72,42 +44,6 @@ char  *read_data(int fd)
     return(map);
 }
 
-void check_map(char *str,t_list *list)
-{
-    int i = 0;
-
-    if(!str)
-        fun_free(str,NULL,list);
-    if(str[i] == '\n')
-        fun_free(str,NULL,list);
-    while(str[i])
-    {
-        if(str[i] != '1' && str[i] != '0' && str[i] != 'C' && str[i] != 'E' && str[i] != '\n' && str[i] != 'P')
-        {
-            fun_free(str,NULL,list);
-        }
-        if(str[i] == '\n')
-        {
-            if(str[i + 1] == '\n' || str[i + 1] == '\0')
-                fun_free(str,NULL,list);
-        } 
-        i++;
-    }
-}
-void    check_rectangular(t_list *list)
-{
-    int i;
-
-    i = 0;
-    size_t len = ft_strlen(list->map[i]);
-
-    while(list->map[i])
-    {
-        if(len != ft_strlen(list->map[i]))
-           fun_free(NULL,list->map,list);
-        i++;
-    }
-}
 
 int main(int ac,char **av)
 {
@@ -121,11 +57,12 @@ int main(int ac,char **av)
     list->map = ft_split(line,'\n');
     free(line);
     check_rectangular(list);
+    check_walls(list);
+    check_intru(list);
     free_mem(list->map);
     free(list);
     close(fd);
-    return 0;        
-    
+    return 0;
 }
 
 
