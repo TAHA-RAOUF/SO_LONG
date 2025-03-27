@@ -6,12 +6,11 @@
 /*   By: moraouf <moraouf@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/24 21:09:42 by taha_laylay       #+#    #+#             */
-/*   Updated: 2024/12/16 00:14:39 by moraouf          ###   ########.fr       */
+/*   Updated: 2025/03/27 14:34:48 by moraouf          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "get_next_line.h"
-#include <stdio.h>
 
 char	*ft_strjoin_free(char **reste, char *buffer)
 {
@@ -88,20 +87,3 @@ char	*get_next_line(int fd)
 	reste = read_file(reste, buffer, fd);
 	return (get_line(&reste));
 }
-
-// #include <stdio.h>
-
-// int	main(void)
-// {
-// 	int		fd1;
-// 	char	*line;
-
-// 	fd1 = open("Taha.txt", O_RDONLY);
-// 	while ((line = get_next_line(fd1)) != NULL)
-// 	{
-// 		printf("%s", line);
-// 		free(line);
-// 	}
-
-// 	close(fd1);
-// }

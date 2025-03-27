@@ -6,13 +6,11 @@
 /*   By: moraouf <moraouf@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/23 17:23:15 by moraouf           #+#    #+#             */
-/*   Updated: 2025/03/24 15:31:46 by moraouf          ###   ########.fr       */
+/*   Updated: 2025/03/27 14:14:15 by moraouf          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
-
-
 
 size_t	count_word(const char *str, char set)
 {
