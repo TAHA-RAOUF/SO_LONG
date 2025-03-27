@@ -6,7 +6,7 @@
 /*   By: moraouf <moraouf@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/25 17:53:05 by moraouf           #+#    #+#             */
-/*   Updated: 2025/03/25 18:52:07 by moraouf          ###   ########.fr       */
+/*   Updated: 2025/03/27 01:39:12 by moraouf          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,7 +77,17 @@ void    check_rectangular(t_list *list)
         i++;
     }
 }
+void check_name(char *str)
+{
+    int len;
 
+    len = ft_strlen(str);
+    if(len <= 4 || str[len - 1] != 'r' || str[len - 2] != 'e' || str[len - 3] != 'b' || str[len -4 ]!= '.' || str[len - 5] == '/')
+    {
+        fun_error("Invalid Name");
+        exit(1);
+    }
+}
 void check_intru(t_list *list)
 {
     int i = 0;
@@ -97,7 +107,7 @@ void check_intru(t_list *list)
         i++;
     }
     if(count != 2)
-        return(fun_error("no Player/exit"), fun_free(NULL,list->map,list));
+        return(fun_error("Prbl Player/exit"), fun_free(NULL,list->map,list));
     count = 0;
     i = 0;
     while(list->map[i])
@@ -115,4 +125,5 @@ void check_intru(t_list *list)
     }
     if(count < 1)
          return(fun_error("no Collectible"), fun_free(NULL,list->map,list));
+    list->collectible = count;
 }

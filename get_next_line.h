@@ -6,7 +6,7 @@
 /*   By: moraouf <moraouf@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/24 21:10:23 by taha_laylay       #+#    #+#             */
-/*   Updated: 2024/11/26 17:08:44 by moraouf          ###   ########.fr       */
+/*   Updated: 2025/03/26 18:41:29 by moraouf          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,7 @@
 # ifndef BUFFER_SIZE
 #  define BUFFER_SIZE 42
 # endif
+
 
 # include <fcntl.h>
 # include <stdlib.h>
